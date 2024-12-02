@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserimento Dati</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inserisci i tuoi dati</h1>
+    <form id="dataForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required><br><br>
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" required><br><br>
+        <label for="indirizzo">Indirizzo:</label>
+        <input type="text" id="indirizzo" required><br><br>
+        <label for="citta">Città:</label>
+        <input type="text" id="citta" required><br><br>
+        <button type="button" onclick="aggiungiDati()">Aggiungi</button>
+    </form>
+    <h2>Tabella Dati</h2>
+    <table id="datiTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const dati = [];
+        function aggiungiDati() {
+            const nome = document.getElementById('nome').value;
+            const cognome = document.getElementById('cognome').value;
+            const indirizzo = document.getElementById('indirizzo').value;
+            const citta = document.getElementById('citta').value;
+
+            if (!nome || !cognome || !indirizzo || !citta) {
+                alert('Compila tutti i campi!');
+                return;
+            }
+
+            dati.push([nome, cognome, indirizzo, citta]);
+
+            document.getElementById('dataForm').reset();
+
+            aggiornaTabella();
+        }
+
+        function aggiornaTabella() {
+            const tbody = document.getElementById('datiTable').querySelector('tbody');
+
+            tbody.innerHTML = '';
+
+            dati.forEach((riga) => {
+                const tr = document.createElement('tr');
+                riga.forEach((valore) => {
+                    const td = document.createElement('td');
+                    td.textContent = valore;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>
