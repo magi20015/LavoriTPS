@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML5 Canvas - Draw a Line</h1>
+<canvas id="myCanvas" width="300" height="200" style="border:1px solid #000000;">
+    Sorry, your browser does not support canvas.
+</canvas>
+<script>
+    
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+
+    ctx.beginPath();
+    ctx.moveTo(150, 15);   // Punta superiore
+    ctx.lineTo(185, 175); // Punto in basso a destra
+    ctx.lineTo(50, 75);   // Punto a sinistra
+    ctx.lineTo(250, 75);  // Punto a destra
+    ctx.lineTo(115, 175); // Punto in basso a sinistra
+    ctx.lineTo(150, 15);  // Torna al punto iniziale
+    ctx.closePath();
+
+
+    ctx.stroke();
+</script>
+</body>
+</html>
