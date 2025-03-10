@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+  <title>Inserisci Dati Utente</title>
+  <script>
+    function salvaDati() {
+      // recupero dati form
+      const nome = document.getElementById('nome').value;
+      const cognome = document.getElementById('cognome').value;
+      const eta = document.getElementById('eta').value;
+      const indirizzo = document.getElementById('indirizzo').value;
+
+      // Creaazione oggetto utente
+      const utente = {
+        nome: nome,
+        cognome: cognome,
+        eta: eta,
+        indirizzo: indirizzo
+      };
+
+      // Salva l'oggetto utente nel localStorage come stringa JSON
+      localStorage.setItem('utente', JSON.stringify(utente));
+
+      // Reindirizza alla seconda pagina
+      window.location.href = "seconda_pagina.html";
+    }
+  </script>
+</head>
+<body>
+  <h1>Inserisci Dati Utente</h1>
+  <form onsubmit="event.preventDefault(); salvaDati();">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" required><br><br>
+    
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" required><br><br>
+    
+    <label for="eta">Età:</label>
+    <input type="number" id="eta" required><br><br>
+    
+    <label for="indirizzo">Indirizzo:</label>
+    <input type="text" id="indirizzo" required><br><br>
+    
+    <button type="submit">Salva e Vai alla Griglia</button>
+  </form>
+</body>
+</html>
