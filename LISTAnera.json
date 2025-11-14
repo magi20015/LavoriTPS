@@ -1,0 +1,50 @@
+[
+  {
+    "nome": "Luca",
+    "cognome": "Bianchi",
+    "citta": "Monza",
+    "indirizzo": "Via Leopardi 12",
+    "cap": "20900",
+    "età": 14
+  },
+  {
+    "nome": "Giulia",
+    "cognome": "Seri",
+    "citta": "Pescara",
+    "indirizzo": "Corso Umberto 88",
+    "cap": "65121",
+    "età": 32
+  },
+  {
+    "nome": "Riccardo",
+    "cognome": "Moretti",
+    "citta": "Trento",
+    "indirizzo": "Via Brennero 101",
+    "cap": "38121",
+    "età": 63
+  },
+  {
+    "nome": "Elena",
+    "cognome": "Gualtieri",
+    "citta": "Padova",
+    "indirizzo": "Via Altinate 7",
+    "cap": "35121",
+    "età": 22
+  },
+  {
+    "nome": "Davide",
+    "cognome": "Riva",
+    "citta": "Cremona",
+    "indirizzo": "Via Mantova 34",
+    "cap": "26100",
+    "età": 41
+  },
+  {
+    "nome": "Martina",
+    "cognome": "Sanna",
+    "citta": "Nuoro",
+    "indirizzo": "Via Roma 55",
+    "cap": "08100",
+    "età": 19
+  }
+]
