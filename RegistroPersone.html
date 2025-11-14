@@ -2,11 +2,11 @@
 <html>
 <head>
     <script>
-        let parseJSON= [] //variabile salvata in globale per essere utilizzata anche nelle altre funzioni
+        let parseJSON= [] //array globale che verrà usato dalle funzioni successive
 
         let filehttp 
 
-        //funzione per caricare il JSON
+        //funzione per ottenere il file JSON dal server
         function caricaDatiJ() {
             const richiesta = new XMLHttpRequest()
             richiesta.open("GET", "https://magi20015.github.io/LavoriTPS/RegistroPersone.json", true)
@@ -17,42 +17,47 @@
                 //console.log(parseJSON)
             }
         }
-        //funzione per caricare l'XML
+
+        //funzione per recuperare il contenuto XML
         function caricaDatiX(){
             const richiesta= new XMLHttpRequest(); 
             richiesta.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) { //se lo stato della richiesta==4 la risposta è stata ricevuta ed è pronta, status==200 la richiesta è andata a buon fine
-                myFunction(this);//manda la richiesta come argomento
+                //quando la richiesta è completata e non ci sono errori
+                if (this.readyState == 4 && this.status == 200) {
+                myFunction(this); //invio del risultato alla funzione dedicata
                 }
                 };
                 richiesta.open("GET", "https://magi20015.github.io/LavoriTPS/RegistroPersone.xml", true);
                 richiesta.send();
-                function myFunction(file) { //si occupa di fare qualcosa col file una volta caricato
+
+                function myFunction(file) { //elaborazione del file XML ricevuto
                     filehttp = file.responseXML;
                     console.log(filehttp)
                 }
         }
-        //creazione tabellaXML
+
+        //creazione dinamica della tabella per visualizzare i dati XML
         function letturaX(){
-            let vittime= filehttp.documentElement.children //trova tutti i "vittima"
-            let campi= vittime[0].children; //campi intestazione
+            let vittime= filehttp.documentElement.children //seleziona tutti i nodi <vittima>
+            let campi= vittime[0].children; //recupera i tag della prima vittima per creare l'intestazione
             let tabella=document.createElement("table")
-            //creazione intestazione tabella
+            
+            //creazione delle intestazioni della tabella
             let intestazioneRow=document.createElement("tr")
             for(let i=0; i<campi.length; i++){
                 let intestazione=document.createElement("th")
-                intestazione.textContent = campi[i].tagName //prende i tag di vittima
+                intestazione.textContent = campi[i].tagName //nome dei tag usati come colonne
                 intestazioneRow.appendChild(intestazione)
             }
             tabella.appendChild(intestazioneRow)
 
-            //righe vittime
+            //inserimento delle righe con i dati veri e propri dell’XML
             for(let i=0; i<vittime.length; i++){
                 let riga= document.createElement("tr")
-                let dati = vittime[i].children //prende i dati dentro ogni vittima
-                for(let j=0; j<dati.length; j++){ //scorre tutti i campi della vittima
+                let dati = vittime[i].children //tutti i sotto-campi di ogni vittima
+                for(let j=0; j<dati.length; j++){ 
                     let intestazione = document.createElement("td")
-                    intestazione.textContent = dati[j].textContent //contenuto dei campi di vittima
+                    intestazione.textContent = dati[j].textContent //testo contenuto nei tag XML
                     riga.appendChild(intestazione)
                 }
                 tabella.appendChild(riga)
@@ -60,13 +65,13 @@
             document.getElementById("outputX").appendChild(tabella)
         }
 
+        //funzione per generare la tabella con JSON
         function lettura(){
-                //creazione tabella
                 let tabella= document.createElement("table")
 
-                const chiavi=Object.keys(parseJSON[0])//chiavi del primo oggetto del file JSON per fare l'intestazione
+                const chiavi=Object.keys(parseJSON[0])//prende i nomi dei campi per creare l’intestazione
                 
-                //creazione della prima riga di intestazione con le chiavi e appensione di essa alla tabella
+                //costruzione della riga di intestazione
                 let intestazioneRow=document.createElement("tr")
                 for(let i=0; i<chiavi.length; i++){
                     let intestazione=document.createElement("th");
@@ -75,13 +80,12 @@
                 }
                 tabella.appendChild(intestazioneRow)
 
-                //creazione contenuto tabella
-                
+                //inserimento dei dati riga per riga
                 for(let i=0; i<parseJSON.length ;i++){
                     let righe= document.createElement("tr");
                     for(let j=0; j<chiavi.length; j++ ){
                         let colonne= document.createElement("td")
-                        colonne.textContent = colonne.textContent = parseJSON[i][chiavi[j]] //prende valore della chiave al posto "j" dell'oggetto "i"
+                        colonne.textContent = parseJSON[i][chiavi[j]] //valore collegato alla chiave corrente
                         righe.appendChild(colonne)
                     }
                 tabella.appendChild(righe)
@@ -90,7 +94,7 @@
                 output.appendChild(tabella);
      }
     
-
+    //mostra maggiorenne nel JSON
     function maggiorenni(){ 
         console.log(parseJSON)
                 let maggiorenni="" 
@@ -103,16 +107,18 @@
                 let output=document.getElementById("outputM").innerHTML = maggiorenni
             }
 
+    //cerca i cognomi che iniziano con una lettera
     function ricerca(){
         let lettera=document.getElementById("ricerca").value
         let cognomi="I cognomi che iniziano con " + lettera + " sono: "
         for (let i = 0; i < parseJSON.length; i++) {
-            if(parseJSON[i]["cognome"].startsWith(lettera)) //il metodo startsWith restituisce true o false in base alla variabile a cui si applica il metodo
+            if(parseJSON[i]["cognome"].startsWith(lettera)) //controlla se il cognome comincia con la lettera scelta
             cognomi += parseJSON[i]["cognome"] +"<br>"
         }
         let output=document.getElementById("outputC").innerHTML = cognomi
     }
 
+    //individua la generazione in base all’anno 
     function generazione(){
         let anno = document.getElementById("eta").value;
         let generazione = "";
@@ -135,6 +141,8 @@
         }
             let output=document.getElementById("outputG").innerHTML = generazione
     }
+
+    //richiama entrambe le funzioni di caricamento dati
     function caricaDati(){
         caricaDatiX()
         caricaDatiJ()
@@ -146,7 +154,7 @@
 
 <body onload="caricaDati()">
 
-    <h1>Lista Nera</h1>
+    <h1>Registro</h1>
    <p id="output">  </p>
    <p id="outputX"> </p>
     <input type="button" value="visualizza JSON" onclick="lettura()">
