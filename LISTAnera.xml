@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaNera>
+    <vittima genere="M">
+        <nome>Lorenzo</nome>
+        <Cognome>Bianchi</Cognome>
+        <citta>Belluno</citta>
+        <indirizzo>Via Verdi 45</indirizzo>
+        <eta>54</eta>
+        <GSanguigno>B+</GSanguigno>
+    </vittima>
+
+    <vittima genere="F">
+        <nome>Sara</nome>
+        <Cognome>Gentili</Cognome>
+        <citta>Rivoli</citta>
+        <indirizzo>Via Torino 8</indirizzo>
+        <eta>31</eta>
+        <GSanguigno>A-</GSanguigno>
+    </vittima>
+
+    <vittima genere="M">
+        <nome>Tommaso</nome>
+        <Cognome>Marchetti</Cognome>
+        <citta>Fano</citta>
+        <indirizzo>Corso Matteotti 112</indirizzo>
+        <eta>67</eta>
+        <GSanguigno>0-</GSanguigno>
+    </vittima>
+
+    <vittima genere="M">
+        <nome>Gabriele</nome>
+        <Cognome>Lucchesi</Cognome>
+        <citta>Imperia</citta>
+        <indirizzo>Via Cascione 3</indirizzo>
+        <eta>29</eta>
+        <GSanguigno>AB+</GSanguigno>
+    </vittima>
+</ListaNera>
