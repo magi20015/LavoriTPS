@@ -215,3 +215,64 @@
     </script>
 </head>
 
+    <body>
+
+    <h1>Registro</h1>
+
+    
+    <input type="button" id="btnCaricaJSON" value="Carica JSON" onclick="caricaDatiJ()">
+    <input type="button" id="btnCaricaXML" value="Carica XML" onclick="caricaDatiX()">
+
+    <br><br>
+
+    <p id="output"></p>
+    <p id="outputXml"></p>
+
+    <input type="button" id="btnJSON" value="Mostra dati JSON" onclick="lettura()">
+    <input type="button" id="btnXML" value="Mostra dati XML" onclick="letturaX()">
+
+    <br><br>
+
+    <label for="ricerca">Scegli la lettera dei cognomi:</label>
+    <select id="ricerca" name="ricerca">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>E</option>
+        <option>F</option>
+        <option>G</option>
+        <option>H</option>
+        <option>I</option>
+        <option>J</option>
+        <option>K</option>
+        <option>L</option>
+        <option>M</option>
+        <option>N</option>
+        <option>O</option>
+        <option>P</option>
+        <option>Q</option>
+        <option>R</option>
+        <option>S</option>
+        <option>T</option>
+        <option>U</option>
+        <option>V</option>
+        <option>W</option>
+        <option>X</option>
+        <option>Y</option>
+        <option>Z</option>
+    </select>
+
+    <input type="button" id="btnRicerca" value="Cerca Cognomi" onclick="ricerca()">
+    <p id="outputCg"></p>
+
+    <input type="number" id="eta" name="età">
+    <input type="button" id="btnGenerazione" value="Calcola Generazione" onclick="generazione()">
+    <p id="outputGe"></p>
+
+    <input type="button" id="btnMaggiorenni" value="Mostra Maggiorenni" onclick="maggiorenni()">
+    <p id="outputMa"></p>
+
+</body>
+
+
