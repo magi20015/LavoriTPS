@@ -7,7 +7,7 @@
             richiedi.send()
 
             richiedi.onload = function(){
-                parseJSON = JSON.parse(richiedi.responseText);
+                let parseJSON = JSON.parse(richiedi.responseText);
                 let tabella = document.createElement("table")
                 const chiavi = Object.keys(parseJSON[0])
                 let intestazioneRow = document.createElement("tr")
@@ -27,9 +27,10 @@
                     tabella.appendChild(righe)
                 }
                 tabella.appendChild(colonne)
+                let output = document.getElementById("output")
+                output.appendChild(tabella);
             }
-            let output = document.getElementById("output")
-            output.appendChild(tabella);
+            
            }            
         </script>
     </head>
