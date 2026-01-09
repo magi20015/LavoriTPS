@@ -1,0 +1,41 @@
+[
+  {
+    "tipo": "Baseball hat",
+    "taglia": "7",
+    "prezzo": "30$",
+    "colore": "Blu"
+  },
+  
+  {
+    "tipo": "Beani",
+    "taglia": "M",
+    "prezzo": "27$",
+    "colore": "Giallo"
+  },
+    
+  {
+    "tipo": "Colbacco",
+    "taglia": "L",
+    "prezzo": "65$",
+    "colore": "Bianco"
+  },
+
+  {
+    "tipo": "Coppola",
+    "taglia": "M",
+    "prezzo": "50$",
+    "colore": "Nero"
+  }
+    {
+    "tipo": "Baseball hat",
+    "taglia": "7",
+    "prezzo": "30$",
+    "colore": "Blu"
+  },
+   {
+    "tipo": "Sombrero",
+    "taglia": "TU",
+    "prezzo": "200$",
+    "colore": "Classico(Nachos)"
+  }
+]
