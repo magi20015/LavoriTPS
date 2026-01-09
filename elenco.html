@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script>
+           function caricaDati(){
+            const richiedi = new XMLHttpRequest()
+            richiedi.open("GET","elenco.json",true)
+            richiedi.send()
+
+            richiedi.onload = function(){
+                parseJSON = JSON.parse(richiedi.responseText);
+                let tabella = document.createElement("table")
+                const chiavi = Object.keys(parseJSON[0])
+                let intestazioneRow = document.createElement("tr")
+                for(let i=0; i<chiavi.length; i++){
+                    let intestazione = document.createElement("th")
+                    intestazione.textContent = chiavi[i];
+                    intestazioneRow.appendChild(intestazione)
+                }
+                tabella.appendChild(intestazioneRow)
+                for(let i=0; i<parseJSON.length ;i++){
+                    let righe = document.createElement("tr");
+                    for(let j=0; j<chiavi.length; j++){
+                        let colonne = document.createElement("td")
+                        colonne.textContent = parseJSON[i][chiavi[j]]
+                        righe.appendChild(colonne)
+                    }
+                    tabella.appendChild(righe)
+                }
+                tabella.appendChild(colonne)
+            }
+            let output = document.getElementById("output")
+            output.appendChild(tabella);
+           }            
+        </script>
+    </head>
+    <body>
+        <p id="output">
+
+        </p>
+    </body>
+</html>
